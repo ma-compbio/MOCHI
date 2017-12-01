@@ -4,7 +4,13 @@ import os
 def Load_dict(path):
 	return np.load(path).item()
 
-def Build_Result(cell,cluster_result,path2 = "./Result/"):
+def Build_Result(cell,cluster_result,path = "./Result/"):
+	try:
+		shutil.rmtree(path)
+	except:
+		print "First Time"
+	os.makedirs(path)
+
 	#HiC_Value = np.load("../Temp/%s/HiC_Value.npy" %(cell))
 	Node2Bin = Load_dict("../Temp/%s/node2bin.npy" %(cell))
 	Bin2Gene = Load_dict("../Temp/%s/bin2gene.npy" %(cell))
@@ -12,10 +18,11 @@ def Build_Result(cell,cluster_result,path2 = "./Result/"):
 	connect = np.triu(connect,k = 1)
 	print "Number of clusters = %d" %(len(cluster_result))
 	size_list = []
+	print len(cluster_result)
 	for i in xrange(len(cluster_result)):
 		cluster = cluster_result[i]
 		size_list.append(len(cluster))
-		f = open(path2+str(i)+".txt","w")
+		f = open(path+str(i)+".txt","w")
 		f.write("Source\tTarget\tWeight\tEdgeType\tSourceType\tTargetType\n")
 		cluster = np.asarray(cluster)
 		cluster = np.sort(cluster)

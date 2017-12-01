@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-  
 from optparse import OptionParser
 import os
-import Preprocess_entrance
+import Preprocess
 import Graph
 
 def parse_args():
@@ -10,6 +10,7 @@ def parse_args():
 	parser.add_option("-s", "--stop_threshold", default = 0.7)
 	parser.add_option("-p", "--parent_threshold",default = 0.45)
 	parser.add_option("-t", "--total",default = False)
+	parser.add_option("-m", "--motif",default = 4)
 
 	(opts, args) = parser.parse_args()
 	return opts
@@ -28,15 +29,15 @@ def makepath(cell):
 
 
 
-def run(cell,stop_threshold,parent_threshold,total):
+def run(cell,stop_threshold,parent_threshold,total,motif):
 
 	#Build the Path
 	makepath(cell)
 
 	if (not os.path.isfile("../Data/%s/Edge_list.txt" %(cell))) or total:
-		Preprocess_entrance.run(cell)
+		Preprocess.run(cell)
 
-	Graph.run(cell,stop_threshold,parent_threshold,total)	
+	Graph.run(cell,stop_threshold,parent_threshold,total,motif)
 
 
 
@@ -47,6 +48,6 @@ def run(cell,stop_threshold,parent_threshold,total):
 
 def main():
 	opts = parse_args()
-	run(opts.cell,opts.stop_threshold,opts.parent_threshold,opts.total)
+	run(opts.cell,opts.stop_threshold,opts.parent_threshold,opts.total,opts.motif)
 if __name__ == '__main__':
 	main()
