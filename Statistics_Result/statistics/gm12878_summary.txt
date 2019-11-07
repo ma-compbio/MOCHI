@@ -1,0 +1,6 @@
+Number of clusters = 266(before splited)
+Number of clusters = 357(splited)
+Number of clusters with numerous chromosomes = 59
+Number of genes in a cluster = 7018
+Number of genes not in any cluster = 4609
+Number of clusters with overlapping blah blah(splitted) = 325
