@@ -27,7 +27,7 @@ An input example for cell line gm12878 is provided at the directory ./Data/gm128
 
 Required files are:
 
-**hic_gm12878_KR_10000_intra_subset_chr*_oe_1_genes.txt**
+**hic_gm12878_KR_10000_intra_subset_chr[1,2,..,X]_oe_1_genes.txt**
 
 Intra chromosomal matrix with KR and oe normalization. The data is filtered to kept only the region with expressed genes:
 
