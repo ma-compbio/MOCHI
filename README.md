@@ -84,3 +84,17 @@ To repeat some of the analysis we did in the manuscript, annotations like PPI ne
 
 We provide the corresponding files in the directory  ./Statistics
 
+## Cite
+If you want to cite our work:
+
+```
+@article{tian2020mochi,
+  title={MOCHI enables discovery of heterogeneous interactome modules in 3D nucleome},
+  author={Tian, Dechao and Zhang, Ruochi and Zhang, Yang and Zhu, Xiaopeng and Ma, Jian},
+  journal={Genome Research},
+  pages={gr--250316},
+  year={2020},
+  publisher={Cold Spring Harbor Lab}
+}
+```
+
