@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 from numpy.linalg import eigh
-from Build_Result import Build_Result
+#from Build_Result import Build_Result #don't need this anymore
 import shutil
 import sys
 import os
