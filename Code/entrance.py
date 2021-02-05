@@ -6,11 +6,11 @@ import Graph
 
 def parse_args():
 	parser = OptionParser(usage="Graph Partition", add_help_option=False)
-	parser.add_option("-c","--cell",default = 'gm12878')
-	parser.add_option("-s", "--stop_threshold", default = 0.7)
-	parser.add_option("-p", "--parent_threshold",default = 0.45)
-	parser.add_option("-t", "--total",default = False)
-	parser.add_option("-m", "--motif",default = 4)
+	parser.add_option("-c","--cell", type="string", default='gm12878')
+	parser.add_option("-s", "--stop_threshold", type="float", default=0.7)
+	parser.add_option("-p", "--parent_threshold", type="float", default=0.45)
+	parser.add_option("-t", "--total", type="string", default="False")
+	parser.add_option("-m", "--motif", type="int", default=4)
 
 	(opts, args) = parser.parse_args()
 	return opts
@@ -47,6 +47,16 @@ def run(cell,stop_threshold,parent_threshold,total,motif):
 
 def main():
 	opts = parse_args()
+
+	#Quick workaround because optparse doesn't natively support boolean types.
+	#The cmdline interface should eventually be changed so that putting "-t" makes opts.total True, otherwise its False.
+	#For now though, want to maintain consistency with pre-existing documentation and usage.
+	if (opts.total == "True"):
+		opts.total = True
+	else:
+		opts.total = False
+
 	run(opts.cell,opts.stop_threshold,opts.parent_threshold,opts.total,opts.motif)
+
 if __name__ == '__main__':
 	main()
